@@ -83,6 +83,8 @@ Plug 'scrooloose/nerdcommenter'
 " Code completion
 " Plug 'Valloric/YouCompleteMe'
 
+" tmux navigator
+Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
