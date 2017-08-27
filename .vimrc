@@ -84,7 +84,7 @@ Plug 'scrooloose/nerdcommenter'
 " Plug 'Valloric/YouCompleteMe'
 
 " tmux navigator
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
