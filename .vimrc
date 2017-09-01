@@ -80,6 +80,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
 
+" Vim dispatch
+Plug 'tpope/vim-dispatch'
+
 " Code completion
 " Plug 'Valloric/YouCompleteMe'
 
