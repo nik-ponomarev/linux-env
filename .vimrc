@@ -133,3 +133,6 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+
+" Vim-dispatch build
+nnoremap <F5> :Dispatch<CR>
