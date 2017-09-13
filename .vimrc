@@ -83,11 +83,11 @@ Plug 'scrooloose/nerdcommenter'
 " Vim dispatch
 Plug 'tpope/vim-dispatch'
 
+" Markdown
+Plug 'plasticboy/vim-markdown'
+
 " Code completion
 " Plug 'Valloric/YouCompleteMe'
-
-" tmux navigator
-" Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
