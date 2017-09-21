@@ -63,6 +63,9 @@ set hlsearch
 
 :let mapleader = ","
 
+" Delete current Buffer
+nmap <leader>w :bp<bar>bd #<CR> 
+
 " PLUGIN MANAGER VIM-PLUG
 
 " Specify a directory for plugins
@@ -136,3 +139,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Vim-dispatch build
 nnoremap <F5> :Dispatch<CR>
+
+" Markdown config
+let g:vim_markdown_folding_disabled = 1 
