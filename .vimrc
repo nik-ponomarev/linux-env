@@ -29,6 +29,9 @@ set expandtab
 " show line numbers
 set number
 
+" Can move one more character after line end
+set virtualedit=onemore
+
 " show command in bottom bar
 set showcmd
 set showmode
