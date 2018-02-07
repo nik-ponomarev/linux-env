@@ -83,9 +83,6 @@ Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 " Air-line 
 Plug 'vim-airline/vim-airline'
 
-" CTRLP
-" Plug 'ctrlpvim/ctrlp.vim'
-
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
 
@@ -98,9 +95,6 @@ Plug 'tpope/vim-dispatch'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
-
-" Code completion
-" Plug 'Valloric/YouCompleteMe'
 
 " Initialize plugin system
 call plug#end()
@@ -121,10 +115,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "" Air-line config
 
 let g:airline#extensions#tabline#enabled = 1
-
-"" YouCompleteMe config
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugins/YouCompleteMe/configs/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
 
 "" NERD Commenter config
 
