@@ -18,11 +18,11 @@ colorscheme monokai
 " number of visual spaces per TAB
 set tabstop=4
 
+" number of spaces to be shifted
+set shiftwidth=4
+
 " number of spaces in tab when editing
 set softtabstop=4
-
-" number of spaces for shifting
-set shiftwidth=4
 
 " tabs are spaces
 set expandtab
@@ -84,10 +84,14 @@ Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 
 " CTRLP
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 " NERD Commenter
 Plug 'scrooloose/nerdcommenter'
+
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Vim dispatch
 Plug 'tpope/vim-dispatch'
@@ -100,6 +104,8 @@ Plug 'plasticboy/vim-markdown'
 
 " Initialize plugin system
 call plug#end()
+
+"" PLUGIN CONFIGS
 
 "" NerdTREE config
 
@@ -148,3 +154,47 @@ nnoremap <F5> :Dispatch<CR>
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1 
+
+" FZF config
+
+" Default fzf layout
+" " - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" Augmenting Ag command using fzf#vim#with_preview function
+"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
+" :Ag  - Start fzf with hidden preview window that can be enabled with \"?\" key
+" :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+    \               <bang>0 ? fzf#vim#with_preview('up:60%')
+      \                 : fzf#vim#with_preview('right:50%:hidden','?'),
+        \           <bang>0)
+
+" Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" Mappings
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <leader>a :Ag<SPACE>
