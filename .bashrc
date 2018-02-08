@@ -28,6 +28,9 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
+# colored prompt
+export PS1="\[\033[38;5;39m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h:\[$(tput sgr0)\]\[\033[38;5;2m\][\w]\[$(tput sgr0)\]\[\033[38;5;39m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -51,5 +54,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# My config
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Proxy
+# export http_proxy=http://proxy-chain.intel.com:911
+# export https_proxy=https://proxy-chain.intel.com:911
+
+# Add path to local binaries
+# export PATH=~/installed-soft/bin:~/.fzf/bin:$PATH
+
+# Add path to local libraries
+# export LD_LIBRARY_PATH=~/installed-soft/lib:$LD_LIBRARY_PATH
