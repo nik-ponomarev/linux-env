@@ -32,6 +32,10 @@ set expandtab
 " show line numbers
 set number
 
+" show whitespaces and tabs
+set list
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+
 " Can move one more character after line end
 set virtualedit=onemore
 
