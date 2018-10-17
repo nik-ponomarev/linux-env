@@ -74,7 +74,20 @@ set hlsearch
 :let mapleader = ","
 
 " Delete current Buffer
-nmap <leader>w :bp<bar>bd #<CR> 
+nmap <leader>w :bp<bar>bd #<CR>
+
+" Ctags
+
+set tags=./tags;,tags;./.tags;,.tags;
+
+" Generate/add ctags for TBB project
+function! GenerateTBBTags()
+    let tbb_tags_command = "uctags -f .tags -R include src/tbb src/tbbmalloc src/tbbproxy"
+    silent exec "!" . tbb_tags_command
+    redraw!
+endfunction
+
+:command TBBTags :call GenerateTBBTags()
 
 " PLUGIN MANAGER VIM-PLUG
 
@@ -84,7 +97,7 @@ call plug#begin('~/.vim/plugins')
 " On-demand loading of NerdTREE
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 
-" Air-line 
+" Air-line
 Plug 'vim-airline/vim-airline'
 
 " NERD Commenter
@@ -94,11 +107,20 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Tagbae. List of tags in current file, bird's eye view.
+" Plug 'majutsushi/tagbar'
+
 " Vim dispatch
 Plug 'tpope/vim-dispatch'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
+
+" Snippets engine
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
 " Initialize plugin system
 call plug#end()
@@ -149,6 +171,13 @@ nnoremap <F5> :Dispatch<CR>
 " Markdown config
 let g:vim_markdown_folding_disabled = 1 
 
+" UltiSnips snippets configuration
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " FZF config
 
 " Default fzf layout
@@ -188,7 +217,11 @@ let g:fzf_colors =
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
+" Ctags command
+let g:fzf_tags_command = 'uctags -f .tags -R .'
+
 " Mappings
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>t :Tags<CR>
 nnoremap <leader>a :Ag<SPACE>

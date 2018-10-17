@@ -9,3 +9,4 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias tmux="TERM=xterm-256color tmux"
+
