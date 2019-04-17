@@ -7,6 +7,13 @@ autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+" Persistent undo settings
+set undofile
+set undodir=$HOME/.vim/undo
+
+set undolevels=1000
+set undoreload=10000
+
 " COLORS
 
 " enable syntax processin
@@ -60,8 +67,8 @@ set showmatch
 
 " SEARCHING
 
-" ignore case when searching
-set ignorecase
+" respect case when searching
+set smartcase
 
 " search as characters are entered
 set incsearch
@@ -73,8 +80,27 @@ set hlsearch
 
 :let mapleader = ","
 
+" Delete, but not overwrite the buffer (unnamed register)
+" Also, past-replace, but not overwrite the buffer
+nnoremap <leader>dd "_dd
+xnoremap <leader>dd "_dd
+xnoremap <leader>p "_dP
+
 " Delete current Buffer
 nmap <leader>w :bp<bar>bd #<CR>
+
+" Save file in more convenient way
+nmap <leader>s :w<CR>
+
+" Move among buffers with Ctrl
+map <C-l> :bn<CR>
+map <C-h> :bp<CR>
+
+" Move lines up/down
+nnoremap <C-S-j> :m .+1<CR>==
+nnoremap <C-S-k> :m .-2<CR>==
+vnoremap <C-S-j> :m '>+1<CR>gv=gv
+vnoremap <C-S-k> :m '<-2<CR>gv=gv
 
 " Ctags
 
@@ -118,7 +144,6 @@ Plug 'plasticboy/vim-markdown'
 
 " Snippets engine
 Plug 'SirVer/ultisnips'
-
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
@@ -169,7 +194,7 @@ let g:NERDTrimTrailingWhitespace = 1
 nnoremap <F5> :Dispatch<CR>
 
 " Markdown config
-let g:vim_markdown_folding_disabled = 1 
+let g:vim_markdown_folding_disabled = 1
 
 " UltiSnips snippets configuration
 " Trigger configuration.
@@ -185,18 +210,12 @@ let g:UltiSnipsEditSplit="vertical"
 let g:fzf_layout = { 'down': '~40%' }
 
 " Augmenting Ag command using fzf#vim#with_preview function
-"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
-" :Ag  - Start fzf with hidden preview window that can be enabled with \"?\" key
-" :Ag! - Start fzf in fullscreen and display the preview window above
 command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-    \               <bang>0 ? fzf#vim#with_preview('up:60%')
-      \                 : fzf#vim#with_preview('right:50%:hidden','?'),
-        \           <bang>0)
+  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%'))
 
-" Files command with preview window
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" Just raw ag with ability to pass options options
+command! -bang -nargs=+ -complete=dir Rag
+  \ call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -224,4 +243,6 @@ let g:fzf_tags_command = 'uctags -f .tags -R .'
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>t :Tags<CR>
-nnoremap <leader>a :Ag<SPACE>
+nnoremap <silent> <leader>a :Ag<CR>
+nnoremap <leader>r :Rag<SPACE>
+

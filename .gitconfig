@@ -1,0 +1,11 @@
+[core]
+    editor = vim
+[http]
+    proxy = http://proxy-chain.intel.com:911
+[https]
+    proxy = https_proxy=http://proxy-chain.intel.com:912
+[push]
+    default = simple
+[user]
+    name = Nikita Ponomarev
+    email = nikita.ponomarev@intel.com
