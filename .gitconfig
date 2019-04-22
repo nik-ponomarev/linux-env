@@ -1,5 +1,6 @@
 [core]
     editor = vim
+    fileMode = false
 [http]
     proxy = http://proxy-chain.intel.com:911
 [https]
