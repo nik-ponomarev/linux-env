@@ -3,7 +3,7 @@
 [http]
     proxy = http://proxy-chain.intel.com:911
 [https]
-    proxy = https_proxy=http://proxy-chain.intel.com:912
+    proxy = http://proxy-chain.intel.com:912
 [push]
     default = simple
 [user]

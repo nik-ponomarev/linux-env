@@ -50,9 +50,6 @@ set virtualedit=onemore
 set showcmd
 set showmode
 
-" highlight current line
-set cursorline
-
 " load filetype-specific indent files
 filetype indent on
 

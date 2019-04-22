@@ -7,10 +7,18 @@ mkdir .vim/undo
 # Install/Update  Vim-Plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Install silversearcher
+sudo apt-get install tmux silversearcher-ag sudo build-essential pkg-config autoconf
+
+# Portable soft build
+mkdir portable-soft
+
 # Install universal ctags
-# git clone https://github.com/universal-ctags/ctags.git
-# cd ctags
-# ./autogen.sh
-# ./configure --prefix=$HOME --program-prefix=u
-# make
-# make install
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags
+./autogen.sh
+./configure --prefix=$HOME/portable-soft --program-prefix=u
+make
+make install
+cd ..
+rm -rf ctags

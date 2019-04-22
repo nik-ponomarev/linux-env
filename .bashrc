@@ -59,14 +59,15 @@ fi
 
 # My config
 
+# FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Proxy
-# export http_proxy=http://proxy-chain.intel.com:911
-# export https_proxy=https://proxy-chain.intel.com:911
+export http_proxy=http://proxy-chain.intel.com:911
+export https_proxy=https://proxy-chain.intel.com:911
 
 # Add path to local binaries
-# export PATH=~/installed-soft/bin:~/.fzf/bin:$PATH
+export PATH=~/portable-soft/bin:$PATH
 
 # Add path to local libraries
 # export LD_LIBRARY_PATH=~/installed-soft/lib:$LD_LIBRARY_PATH
