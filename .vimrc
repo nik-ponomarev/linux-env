@@ -73,6 +73,9 @@ set incsearch
 " highlight matches
 set hlsearch
 
+" Disable automatic comments on the next line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " KEY MAPPINGS
 
 :let mapleader = ","
@@ -204,7 +207,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Default fzf layout
 " " - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '50%' }
 
 " Augmenting Ag command using fzf#vim#with_preview function
 command! -bang -nargs=* Ag

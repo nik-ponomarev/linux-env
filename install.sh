@@ -22,3 +22,10 @@ make
 make install
 cd ..
 rm -rf ctags
+
+# Install tmux plugin
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# SSH generate
+cd ./ssh
+ssh-keygen -o -t rsa -C "nikita.ponomarev@intel.com" -b 4096

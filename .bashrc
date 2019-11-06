@@ -32,7 +32,7 @@ case "$TERM" in
 esac
 
 # colored prompt
-export PS1="\[\033[38;5;39m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\H:\[$(tput sgr0)\]\[\033[38;5;2m\][\w]\[$(tput sgr0)\]\[\033[38;5;39m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;39m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\H:\[$(tput sgr0)\]\[\033[38;5;2m\][\W]\[$(tput sgr0)\]\[\033[38;5;39m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
